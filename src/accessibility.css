@@ -91,6 +91,27 @@ body.a11y-text-175 h4 { font-size: 2.1em !important; }
 body.a11y-text-175 h5 { font-size: 1.75em !important; }
 body.a11y-text-175 h6 { font-size: 1.575em !important; }
 
+
+/* Preserve images from text size changes */
+body.a11y-text-125 img,
+body.a11y-text-150 img,
+body.a11y-text-175 img,
+body.a11y-text-125 svg,
+body.a11y-text-150 svg,
+body.a11y-text-175 svg,
+body.a11y-text-125 picture,
+body.a11y-text-150 picture,
+body.a11y-text-175 picture,
+body.a11y-text-125 figure,
+body.a11y-text-150 figure,
+body.a11y-text-175 figure,
+body.a11y-text-125 video,
+body.a11y-text-150 video,
+body.a11y-text-175 video {
+  font-size: initial !important;
+  max-width: 100% !important;
+  height: auto !important;
+}
 /* Exclude widget from text size changes */
 .a11y-widget-container,
 .a11y-widget-container * {

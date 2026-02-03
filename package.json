@@ -1,6 +1,6 @@
 {
   "name": "@krunalshah/accessibility-widget-standalone",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Standalone accessibility widget for any website - WordPress, Squarespace, plain HTML",
   "main": "dist/standalone.global.js",
   "files": [

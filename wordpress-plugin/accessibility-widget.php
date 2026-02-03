@@ -3,7 +3,7 @@
  * Plugin Name: Accessibility Widget
  * Plugin URI: https://github.com/kshah902/accessibility-widget-standalone
  * Description: Add a comprehensive accessibility widget to your WordPress site. Features include text size adjustment, high contrast mode, dyslexia font, color blindness filters, text-to-speech, and more.
- * Version: 1.0.1
+ * Version: 1.0.2
  * Author: Krunal Shah
  * Author URI: https://github.com/kshah902
  * License: MIT
@@ -16,11 +16,11 @@ if (!defined('ABSPATH')) {
 }
 
 // Define plugin constants
-define('A11Y_WIDGET_VERSION', '1.0.0');
+define('A11Y_WIDGET_VERSION', '1.0.2');
 define('A11Y_WIDGET_CDN_BASE', 'https://cdn.jsdelivr.net/npm/@krunalshah/accessibility-widget-standalone@');
 
 // SRI (Subresource Integrity) hashes for security
-define('A11Y_WIDGET_JS_INTEGRITY', 'sha384-YAeMCBvqb0wu/HaG1jqcu62mWfPp2EH8Y7E7oJ0CyIl366Rf5XMyZ4YlN3KlO9cm');
+define('A11Y_WIDGET_JS_INTEGRITY', 'sha384-THPrN1dIbmEu3NrQnzpp2XPegtO5te+DKK9ivjbI48Sfos4r8O10ZPpHQ0VUL3fF');
 define('A11Y_WIDGET_CSS_INTEGRITY', 'sha384-XE0InpcMOoCOgSnc/hU+YbiNWztIuArFJ8MmGm/7pUWmIr4+RfPk6DgPYMTyh9Qr');
 
 /**

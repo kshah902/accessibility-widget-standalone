@@ -9,6 +9,10 @@ export default defineConfig({
   noExternal: [/.*/],
   outDir: 'dist',
   clean: true,
+  // Define process.env.NODE_ENV for browser compatibility (React needs this)
+  define: {
+    'process.env.NODE_ENV': '"production"',
+  },
   onSuccess: async () => {
     const fs = await import('fs')
     // Copy CSS to dist

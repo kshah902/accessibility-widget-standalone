@@ -21,11 +21,12 @@
   font-style: normal;
   font-display: swap;
 }
-
 /* -------------------------------------------------------------------------
    Text Size Adjustments
-   Applied to html element since site uses rem units
+   Works with any website (rem, px, or em units)
    ------------------------------------------------------------------------- */
+
+/* Method 1: Root font-size for rem-based sites */
 html:has(body.a11y-text-125) {
   font-size: 125% !important;
 }
@@ -37,6 +38,65 @@ html:has(body.a11y-text-150) {
 html:has(body.a11y-text-175) {
   font-size: 175% !important;
 }
+
+/* Method 2: Direct targeting for px-based sites (WordPress, etc.) */
+body.a11y-text-125 p,
+body.a11y-text-125 span,
+body.a11y-text-125 li,
+body.a11y-text-125 td,
+body.a11y-text-125 th,
+body.a11y-text-125 label,
+body.a11y-text-125 a {
+  font-size: 125% !important;
+}
+
+body.a11y-text-125 h1 { font-size: 2.5em !important; }
+body.a11y-text-125 h2 { font-size: 2em !important; }
+body.a11y-text-125 h3 { font-size: 1.75em !important; }
+body.a11y-text-125 h4 { font-size: 1.5em !important; }
+body.a11y-text-125 h5 { font-size: 1.25em !important; }
+body.a11y-text-125 h6 { font-size: 1.125em !important; }
+
+body.a11y-text-150 p,
+body.a11y-text-150 span,
+body.a11y-text-150 li,
+body.a11y-text-150 td,
+body.a11y-text-150 th,
+body.a11y-text-150 label,
+body.a11y-text-150 a {
+  font-size: 150% !important;
+}
+
+body.a11y-text-150 h1 { font-size: 3em !important; }
+body.a11y-text-150 h2 { font-size: 2.4em !important; }
+body.a11y-text-150 h3 { font-size: 2.1em !important; }
+body.a11y-text-150 h4 { font-size: 1.8em !important; }
+body.a11y-text-150 h5 { font-size: 1.5em !important; }
+body.a11y-text-150 h6 { font-size: 1.35em !important; }
+
+body.a11y-text-175 p,
+body.a11y-text-175 span,
+body.a11y-text-175 li,
+body.a11y-text-175 td,
+body.a11y-text-175 th,
+body.a11y-text-175 label,
+body.a11y-text-175 a {
+  font-size: 175% !important;
+}
+
+body.a11y-text-175 h1 { font-size: 3.5em !important; }
+body.a11y-text-175 h2 { font-size: 2.8em !important; }
+body.a11y-text-175 h3 { font-size: 2.45em !important; }
+body.a11y-text-175 h4 { font-size: 2.1em !important; }
+body.a11y-text-175 h5 { font-size: 1.75em !important; }
+body.a11y-text-175 h6 { font-size: 1.575em !important; }
+
+/* Exclude widget from text size changes */
+.a11y-widget-container,
+.a11y-widget-container * {
+  font-size: revert !important;
+}
+
 
 /* -------------------------------------------------------------------------
    High Contrast Mode

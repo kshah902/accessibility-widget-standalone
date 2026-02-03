@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessibility Widget Test</title>
+    <link rel="stylesheet" href="dist/accessibility.css">
+    <style>
+        body {
+            font-family: system-ui, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+        h1 { color: #1a1a1a; }
+        p { color: #444; margin-bottom: 1em; }
+        a { color: #0066cc; }
+    </style>
+</head>
+<body>
+    <h1>Accessibility Widget Test Page</h1>
+
+    <p>This is a test page to verify the standalone accessibility widget works correctly. The widget should appear as a blue circular button in the bottom-right corner of the screen.</p>
+
+    <h2>Test Features</h2>
+
+    <p>Click the accessibility button to open the panel and test:</p>
+
+    <ul>
+        <li><strong>Text Size</strong> - Try changing the text size using the buttons</li>
+        <li><strong>High Contrast</strong> - Toggle high contrast mode</li>
+        <li><strong>Dyslexia Font</strong> - Enable the OpenDyslexic font</li>
+        <li><strong>Color Blindness Filters</strong> - Test different color blindness simulations</li>
+        <li><strong>Reading Guide</strong> - Enable the line that follows your cursor</li>
+    </ul>
+
+    <h2>Keyboard Shortcuts</h2>
+
+    <p>Try these keyboard shortcuts:</p>
+
+    <ul>
+        <li><kbd>Option/Alt + A</kbd> - Toggle the accessibility panel</li>
+        <li><kbd>Option/Alt + C</kbd> - Toggle high contrast</li>
+        <li><kbd>Option/Alt + M</kbd> - Toggle reduce motion</li>
+        <li><kbd>Option/Alt + R</kbd> - Reset all settings</li>
+    </ul>
+
+    <h2>Sample Links</h2>
+
+    <p>Here are some <a href="#">sample links</a> to test the <a href="#">highlight links</a> feature. When enabled, links should have a visible yellow background.</p>
+
+    <h2>Sample Text for Text-to-Speech</h2>
+
+    <p>Select this text and use the Read Selection button in the Reading tab to test text-to-speech functionality. The widget uses the Web Speech API to read selected text aloud.</p>
+
+    <script src="dist/standalone.global.js"></script>
+</body>
+</html>

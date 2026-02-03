@@ -1,0 +1,43 @@
+{
+  "name": "@krunalshah/accessibility-widget-standalone",
+  "version": "1.0.0",
+  "description": "Standalone accessibility widget for any website - WordPress, Squarespace, plain HTML",
+  "main": "dist/standalone.global.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "accessibility",
+    "a11y",
+    "widget",
+    "wcag",
+    "wordpress",
+    "vanilla-js",
+    "standalone",
+    "no-framework"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kshah902/accessibility-widget-standalone"
+  },
+  "author": "Krunal Shah",
+  "homepage": "https://github.com/kshah902/accessibility-widget-standalone#readme",
+  "bugs": {
+    "url": "https://github.com/kshah902/accessibility-widget-standalone/issues"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "typescript": "^5.7.0",
+    "tsup": "^8.0.0"
+  }
+}

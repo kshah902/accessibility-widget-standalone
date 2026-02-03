@@ -1,0 +1,609 @@
+/* ==========================================================================
+   Accessibility Widget Styles
+
+   IMPORTANT: This widget uses hard-coded neutral colors and style isolation
+   to ensure it looks independent and consistent on any website.
+   ========================================================================== */
+
+/* Style isolation - reset inherited styles */
+.a11y-widget-container,
+.a11y-widget-container *,
+.a11y-widget-container *::before,
+.a11y-widget-container *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.a11y-widget-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 14px;
+  color: #1f2937;
+  text-align: left;
+  direction: ltr;
+}
+
+/* Trigger Button - Neutral blue that works on any site */
+.a11y-widget-trigger {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.25),
+    0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+.a11y-widget-trigger:hover {
+  transform: scale(1.05);
+  box-shadow:
+    0 6px 20px rgba(0, 0, 0, 0.3),
+    0 0 0 3px rgba(37, 99, 235, 0.3);
+}
+
+.a11y-widget-trigger:focus {
+  outline: none;
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.25),
+    0 0 0 3px #60a5fa;
+}
+
+.a11y-widget-trigger:focus-visible {
+  outline: 3px solid #60a5fa;
+  outline-offset: 2px;
+}
+
+/* Panel */
+.a11y-widget-panel {
+  position: absolute;
+  bottom: 70px;
+  right: 0;
+  width: 320px;
+  max-height: calc(100vh - 120px);
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow:
+    0 10px 40px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  animation: a11y-widget-slideUp 0.2s ease-out;
+}
+
+@keyframes a11y-widget-slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .a11y-widget-panel {
+    animation: none;
+  }
+
+  .a11y-widget-trigger {
+    transition: none;
+  }
+}
+
+/* Header */
+.a11y-widget-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  color: #ffffff;
+}
+
+.a11y-widget-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+}
+
+.a11y-widget-closeButton {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease;
+}
+
+.a11y-widget-closeButton:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.a11y-widget-closeButton:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+}
+
+/* Content */
+.a11y-widget-content {
+  padding: 16px 20px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+/* Section */
+.a11y-widget-section {
+  margin-bottom: 20px;
+}
+
+.a11y-widget-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #4b5563;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 10px;
+}
+
+/* Text Size Buttons */
+.a11y-widget-textSizeButtons {
+  display: flex;
+  gap: 8px;
+}
+
+.a11y-widget-textSizeButton {
+  flex: 1;
+  padding: 10px 8px;
+  font-size: 13px;
+  font-weight: 500;
+  background: #f3f4f6;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  color: #374151;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.a11y-widget-textSizeButton:hover {
+  background: #e5e7eb;
+}
+
+.a11y-widget-textSizeButton:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+.a11y-widget-textSizeButton.a11y-widget-active {
+  background: #2563eb;
+  color: #ffffff;
+  border-color: #2563eb;
+}
+
+/* Toggles */
+.a11y-widget-toggles {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.a11y-widget-toggleOption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  border-radius: 10px;
+  transition: background 0.15s ease;
+}
+
+.a11y-widget-toggleOption:hover {
+  background: #f9fafb;
+}
+
+.a11y-widget-toggleInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.a11y-widget-toggleIcon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f3f4f6;
+  border-radius: 8px;
+  color: #4b5563;
+}
+
+.a11y-widget-toggleLabel {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1f2937;
+  cursor: pointer;
+}
+
+.a11y-widget-toggleDescription {
+  margin: 2px 0 0;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* Toggle Switch */
+.a11y-widget-toggle {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  background: #d1d5db;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  flex-shrink: 0;
+}
+
+.a11y-widget-toggle:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+.a11y-widget-toggle:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+.a11y-widget-toggleThumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
+}
+
+.a11y-widget-toggleOn {
+  background: #2563eb;
+}
+
+.a11y-widget-toggleOn .a11y-widget-toggleThumb {
+  transform: translateX(20px);
+}
+
+/* Footer */
+.a11y-widget-footer {
+  padding: 12px 20px 16px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.a11y-widget-resetButton {
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  background: transparent;
+  border: 2px solid #d1d5db;
+  border-radius: 8px;
+  color: #4b5563;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.a11y-widget-resetButton:hover {
+  background: #f3f4f6;
+  border-color: #9ca3af;
+}
+
+.a11y-widget-resetButton:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* Mobile Responsive */
+@media (max-width: 400px) {
+  .a11y-widget-container {
+    bottom: 16px;
+    right: 16px;
+  }
+
+  .a11y-widget-trigger {
+    width: 50px;
+    height: 50px;
+  }
+
+  .a11y-widget-panel {
+    width: calc(100vw - 32px);
+    right: 0;
+    bottom: 66px;
+  }
+}
+
+/* High contrast mode override for the widget itself */
+body.a11y-high-contrast .a11y-widget-panel {
+  background: #FFFFFF;
+  border: 2px solid #000000;
+}
+
+body.a11y-high-contrast .a11y-widget-trigger {
+  background: #000000;
+  border-color: #FFD700;
+}
+
+body.a11y-high-contrast .a11y-widget-toggleOn {
+  background: #000000;
+}
+
+body.a11y-high-contrast .a11y-widget-textSizeButton.a11y-widget-active {
+  background: #000000;
+}
+
+/* ==========================================================================
+   Tab Navigation
+   ========================================================================== */
+
+.a11y-widget-tabs {
+  display: flex;
+  border-bottom: 1px solid #e5e7eb;
+  background: #f9fafb;
+}
+
+.a11y-widget-tab {
+  flex: 1;
+  padding: 12px 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #4b5563;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.a11y-widget-tab:hover {
+  color: #1f2937;
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.a11y-widget-tab:focus {
+  outline: none;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.a11y-widget-tab:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: -2px;
+}
+
+.a11y-widget-tabActive {
+  color: #2563eb;
+  border-bottom-color: #2563eb;
+  background: #ffffff;
+}
+
+/* ==========================================================================
+   Select Dropdown
+   ========================================================================== */
+
+.a11y-widget-selectWrapper {
+  position: relative;
+}
+
+.a11y-widget-select {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 14px;
+  font-family: inherit;
+  color: #1f2937;
+  background: #ffffff;
+  border: 2px solid #d1d5db;
+  border-radius: 8px;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+}
+
+.a11y-widget-select:hover {
+  border-color: #9ca3af;
+}
+
+.a11y-widget-select:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* ==========================================================================
+   Hints
+   ========================================================================== */
+
+.a11y-widget-hint {
+  margin: 8px 0 0;
+  font-size: 12px;
+  color: #6b7280;
+  line-height: 1.4;
+}
+
+/* ==========================================================================
+   Slider
+   ========================================================================== */
+
+.a11y-widget-sliderWrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.a11y-widget-slider {
+  flex: 1;
+  height: 6px;
+  background: #e5e7eb;
+  border-radius: 3px;
+  appearance: none;
+  cursor: pointer;
+}
+
+.a11y-widget-slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  background: #2563eb;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: transform 0.15s ease;
+}
+
+.a11y-widget-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+}
+
+.a11y-widget-slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  background: #2563eb;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.a11y-widget-slider:focus {
+  outline: none;
+}
+
+.a11y-widget-slider:focus::-webkit-slider-thumb {
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3);
+}
+
+.a11y-widget-sliderValue {
+  min-width: 36px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #374151;
+  text-align: right;
+}
+
+/* ==========================================================================
+   TTS Buttons
+   ========================================================================== */
+
+.a11y-widget-ttsButtons {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.a11y-widget-ttsButton {
+  flex: 1;
+  padding: 10px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: inherit;
+  color: #ffffff;
+  background: #2563eb;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.a11y-widget-ttsButton:hover:not(:disabled) {
+  background: #1d4ed8;
+}
+
+.a11y-widget-ttsButton:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3);
+}
+
+.a11y-widget-ttsButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ==========================================================================
+   Keyboard Shortcuts Info
+   ========================================================================== */
+
+.a11y-widget-shortcuts {
+  padding: 8px 20px 12px;
+  font-size: 11px;
+  color: #6b7280;
+  text-align: center;
+  border-top: 1px solid #f3f4f6;
+}
+
+/* ==========================================================================
+   High Contrast Mode Overrides
+   ========================================================================== */
+
+body.a11y-high-contrast .a11y-widget-tabs {
+  background: #ffffff;
+  border-color: #000000;
+}
+
+body.a11y-high-contrast .a11y-widget-tab {
+  color: #000000;
+}
+
+body.a11y-high-contrast .a11y-widget-tabActive {
+  background: #000000;
+  color: #ffffff;
+  border-bottom-color: #ffd700;
+}
+
+body.a11y-high-contrast .a11y-widget-select {
+  border-color: #000000;
+  color: #000000;
+}
+
+body.a11y-high-contrast .a11y-widget-ttsButton {
+  background: #000000;
+  border: 2px solid #ffd700;
+}
+
+body.a11y-high-contrast .a11y-widget-slider::-webkit-slider-thumb {
+  background: #000000;
+  border: 2px solid #ffd700;
+}
+
+body.a11y-high-contrast .a11y-widget-slider::-moz-range-thumb {
+  background: #000000;
+  border: 2px solid #ffd700;
+}

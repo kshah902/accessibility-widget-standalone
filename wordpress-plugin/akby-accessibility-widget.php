@@ -3,7 +3,7 @@
  * Plugin Name: Akby Accessibility Widget
  * Plugin URI: https://github.com/kshah902/accessibility-widget-standalone
  * Description: Add a comprehensive accessibility widget to your WordPress site. Features include text size adjustment, high contrast mode, dyslexia font, color blindness filters, text-to-speech, and more.
- * Version: 1.1.0
+ * Version: 1.5.0
  * Author: Akby
  * Author URI: https://akby.com
  * License: Proprietary
@@ -16,7 +16,7 @@ if (!defined('ABSPATH')) {
 }
 
 // Define plugin constants
-define('A11Y_WIDGET_VERSION', '1.1.0');
+define('A11Y_WIDGET_VERSION', '1.5.0');
 define('A11Y_WIDGET_CDN_BASE', 'https://cdn.jsdelivr.net/npm/@krunalshah/accessibility-widget-standalone@latest');
 define('A11Y_WIDGET_GITHUB_REPO', 'kshah902/accessibility-widget-standalone');
 define('A11Y_WIDGET_SLUG', plugin_basename(__FILE__));

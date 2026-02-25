@@ -607,3 +607,491 @@ body.a11y-high-contrast .a11y-widget-slider::-moz-range-thumb {
   background: #000000;
   border: 2px solid #ffd700;
 }
+
+body.a11y-high-contrast .a11y-widget-profile-button {
+  background: #000000;
+  color: #ffffff;
+  border-color: #ffd700;
+}
+
+body.a11y-high-contrast .a11y-widget-profile-icon {
+  background: #333333;
+  color: #ffd700;
+}
+
+body.a11y-high-contrast .a11y-widget-heading-item {
+  color: #000000;
+  border-color: #000000;
+}
+
+body.a11y-high-contrast .a11y-widget-heading-item:hover {
+  background: #ffd700;
+  color: #000000;
+}
+
+/* ==========================================================================
+   Headings Navigator
+   ========================================================================== */
+
+.a11y-widget-headings-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.a11y-widget-heading-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 13px;
+  color: #1f2937;
+  background: none;
+  border: none;
+  border-bottom: 1px solid #f3f4f6;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  transition: background 0.1s ease;
+}
+
+.a11y-widget-heading-item:hover {
+  background: #f3f4f6;
+}
+
+.a11y-widget-heading-item:focus {
+  outline: 2px solid #2563eb;
+  outline-offset: -2px;
+}
+
+.a11y-widget-heading-item[data-level="1"] { padding-left: 12px; font-weight: 600; }
+.a11y-widget-heading-item[data-level="2"] { padding-left: 24px; font-weight: 500; }
+.a11y-widget-heading-item[data-level="3"] { padding-left: 36px; }
+.a11y-widget-heading-item[data-level="4"] { padding-left: 48px; font-size: 12px; }
+.a11y-widget-heading-item[data-level="5"] { padding-left: 60px; font-size: 12px; }
+.a11y-widget-heading-item[data-level="6"] { padding-left: 72px; font-size: 11px; }
+
+.a11y-widget-heading-level {
+  display: inline-block;
+  min-width: 24px;
+  font-size: 10px;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+}
+
+.a11y-widget-back-button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: inherit;
+  color: #2563eb;
+  background: none;
+  border: none;
+  border-bottom: 1px solid #e5e7eb;
+  cursor: pointer;
+  width: 100%;
+}
+
+.a11y-widget-back-button:hover {
+  background: #f9fafb;
+}
+
+.a11y-widget-back-button:focus {
+  outline: 2px solid #2563eb;
+  outline-offset: -2px;
+}
+
+/* ==========================================================================
+   Profile Buttons
+   ========================================================================== */
+
+.a11y-widget-profiles {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.a11y-widget-profile-button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: inherit;
+  color: #1f2937;
+  background: #f9fafb;
+  border: 2px solid #e5e7eb;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-align: left;
+}
+
+.a11y-widget-profile-button:hover {
+  background: #f3f4f6;
+  border-color: #d1d5db;
+}
+
+.a11y-widget-profile-button:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.a11y-widget-profile-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e5e7eb;
+  border-radius: 8px;
+  color: #4b5563;
+  flex-shrink: 0;
+}
+
+.a11y-widget-profile-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.a11y-widget-profile-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1f2937;
+}
+
+.a11y-widget-profile-desc {
+  display: block;
+  margin-top: 2px;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* -------------------------------------------------------------------------
+   v1.5.0 — Color Pickers
+   ------------------------------------------------------------------------- */
+.a11y-widget-color-pickers {
+  display: flex;
+  gap: 8px;
+  padding: 8px 0;
+}
+
+.a11y-widget-color-picker-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.a11y-widget-color-picker-item label {
+  font-size: 11px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.a11y-widget-color-picker-item input[type="color"] {
+  width: 32px;
+  height: 32px;
+  border: 2px solid #d1d5db;
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 0;
+  background: none;
+}
+
+.a11y-widget-color-picker-item input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 2px;
+}
+
+.a11y-widget-color-picker-item input[type="color"]::-webkit-color-swatch {
+  border-radius: 3px;
+  border: none;
+}
+
+.a11y-widget-color-reset {
+  font-size: 10px;
+  color: #2563eb;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+}
+
+.a11y-widget-color-reset:hover {
+  color: #1d4ed8;
+}
+
+/* -------------------------------------------------------------------------
+   Modal Overlay (shared by Statement + Compliance Report)
+   ------------------------------------------------------------------------- */
+.a11y-statement-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 10003;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.a11y-statement-modal {
+  background: #ffffff;
+  border-radius: 12px;
+  max-width: 600px;
+  width: 100%;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.a11y-statement-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.a11y-statement-header h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0;
+}
+
+.a11y-statement-close {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.a11y-statement-close:hover {
+  background: #f3f4f6;
+  color: #1f2937;
+}
+
+.a11y-statement-content {
+  padding: 20px;
+  overflow-y: auto;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #374151;
+}
+
+.a11y-statement-content h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 16px 0 8px 0;
+}
+
+.a11y-statement-content h3:first-child {
+  margin-top: 0;
+}
+
+.a11y-statement-content p {
+  margin: 0 0 12px 0;
+}
+
+.a11y-statement-content ul {
+  margin: 0 0 12px 0;
+  padding-left: 20px;
+}
+
+.a11y-statement-content li {
+  margin-bottom: 4px;
+}
+
+.a11y-statement-footer {
+  display: flex;
+  gap: 8px;
+  padding: 12px 20px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.a11y-statement-copy {
+  flex: 1;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.a11y-statement-copy:hover {
+  background: #1d4ed8;
+}
+
+.a11y-statement-copy.a11y-copied {
+  background: #059669;
+}
+
+/* -------------------------------------------------------------------------
+   Compliance Report
+   ------------------------------------------------------------------------- */
+.a11y-report-issues {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.a11y-report-issue {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 8px 12px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+}
+
+.a11y-report-severity {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.a11y-report-severity.a11y-severity-critical {
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+}
+
+.a11y-report-severity.a11y-severity-serious {
+  background: #fff7ed;
+  color: #ea580c;
+  border: 1px solid #fed7aa;
+}
+
+.a11y-report-severity.a11y-severity-moderate {
+  background: #fefce8;
+  color: #ca8a04;
+  border: 1px solid #fef08a;
+}
+
+.a11y-report-severity.a11y-severity-minor {
+  background: #f0fdf4;
+  color: #16a34a;
+  border: 1px solid #bbf7d0;
+}
+
+.a11y-report-text {
+  font-size: 13px;
+  color: #374151;
+  line-height: 1.4;
+}
+
+.a11y-report-count {
+  font-size: 12px;
+  color: #6b7280;
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+.a11y-report-summary {
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+  background: #f0f9ff;
+  border: 1px solid #bae6fd;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.a11y-report-stat {
+  text-align: center;
+  flex: 1;
+}
+
+.a11y-report-stat-number {
+  display: block;
+  font-size: 24px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.a11y-report-stat-label {
+  font-size: 11px;
+  color: #6b7280;
+}
+
+/* -------------------------------------------------------------------------
+   Side-by-side buttons row
+   ------------------------------------------------------------------------- */
+.a11y-widget-button-row {
+  display: flex;
+  gap: 8px;
+  padding: 4px 0;
+}
+
+.a11y-widget-button-row button {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: #f9fafb;
+  color: #374151;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.a11y-widget-button-row button:hover {
+  background: #f3f4f6;
+  border-color: #9ca3af;
+}
+
+.a11y-widget-button-row button svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* -------------------------------------------------------------------------
+   High contrast overrides for v1.5.0 elements
+   ------------------------------------------------------------------------- */
+body.a11y-high-contrast .a11y-widget-color-picker-item label {
+  color: #000;
+}
+
+body.a11y-high-contrast .a11y-statement-modal {
+  border: 2px solid #000;
+}
+
+body.a11y-high-contrast .a11y-report-issue {
+  border-color: #000;
+}

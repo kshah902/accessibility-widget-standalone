@@ -299,24 +299,10 @@ body.a11y-highlight-links *:focus {
 }
 
 /* -------------------------------------------------------------------------
-   Color Blindness Simulation Filters
-   Using scientifically accurate color matrices
+   Color Blindness / Monochrome / Saturation Filters
+   Managed imperatively in useAccessibilitySettings.ts via body.style.filter
+   to support stacking multiple filter functions.
    ------------------------------------------------------------------------- */
-
-/* Protanopia (red-blind) */
-body.a11y-protanopia {
-  filter: url('#a11y-protanopia-filter');
-}
-
-/* Deuteranopia (green-blind) */
-body.a11y-deuteranopia {
-  filter: url('#a11y-deuteranopia-filter');
-}
-
-/* Tritanopia (blue-blind) */
-body.a11y-tritanopia {
-  filter: url('#a11y-tritanopia-filter');
-}
 
 /* -------------------------------------------------------------------------
    Custom Focus Indicators
@@ -356,4 +342,358 @@ body.a11y-focus-custom *:focus-visible {
 .a11y-tts-highlight {
   background-color: rgba(229, 185, 78, 0.3) !important;
   outline: 2px solid var(--color-accent, #E5B94E) !important;
+}
+
+/* =========================================================================
+   v1.2.0 — Display & Visual Enhancements
+   ========================================================================= */
+
+/* -------------------------------------------------------------------------
+   Dark Mode
+   ------------------------------------------------------------------------- */
+body.a11y-dark-mode {
+  background-color: #1a1a2e !important;
+  color: #e0e0e0 !important;
+}
+
+body.a11y-dark-mode *:not(.a11y-widget-container *):not(#a11y-widget-portal *) {
+  color: inherit;
+  border-color: #444 !important;
+}
+
+body.a11y-dark-mode div:not(.a11y-widget-container *):not(#a11y-widget-portal *),
+body.a11y-dark-mode section:not(.a11y-widget-container *):not(#a11y-widget-portal *),
+body.a11y-dark-mode article:not(.a11y-widget-container *):not(#a11y-widget-portal *),
+body.a11y-dark-mode main:not(.a11y-widget-container *):not(#a11y-widget-portal *),
+body.a11y-dark-mode header:not(.a11y-widget-container *):not(#a11y-widget-portal *),
+body.a11y-dark-mode footer:not(.a11y-widget-container *):not(#a11y-widget-portal *),
+body.a11y-dark-mode nav:not(.a11y-widget-container *):not(#a11y-widget-portal *),
+body.a11y-dark-mode aside:not(.a11y-widget-container *):not(#a11y-widget-portal *),
+body.a11y-dark-mode table:not(.a11y-widget-container *):not(#a11y-widget-portal *),
+body.a11y-dark-mode th:not(.a11y-widget-container *):not(#a11y-widget-portal *),
+body.a11y-dark-mode td:not(.a11y-widget-container *):not(#a11y-widget-portal *) {
+  background-color: #1a1a2e !important;
+}
+
+body.a11y-dark-mode a:not(.a11y-widget-container *):not(#a11y-widget-portal *) {
+  color: #6db3f2 !important;
+}
+
+body.a11y-dark-mode img:not(.a11y-widget-container *):not(#a11y-widget-portal *) {
+  opacity: 0.9;
+}
+
+body.a11y-dark-mode input:not(.a11y-widget-container *):not(#a11y-widget-portal *),
+body.a11y-dark-mode textarea:not(.a11y-widget-container *):not(#a11y-widget-portal *),
+body.a11y-dark-mode select:not(.a11y-widget-container *):not(#a11y-widget-portal *) {
+  background-color: #2a2a3e !important;
+  color: #e0e0e0 !important;
+  border-color: #555 !important;
+}
+
+/* -------------------------------------------------------------------------
+   Text Spacing
+   ------------------------------------------------------------------------- */
+body.a11y-text-spacing-wide *:not(.a11y-widget-container *):not(#a11y-widget-portal *) {
+  letter-spacing: 0.12em !important;
+  word-spacing: 0.16em !important;
+}
+
+body.a11y-text-spacing-wider *:not(.a11y-widget-container *):not(#a11y-widget-portal *) {
+  letter-spacing: 0.2em !important;
+  word-spacing: 0.32em !important;
+}
+
+/* -------------------------------------------------------------------------
+   Hide Images
+   ------------------------------------------------------------------------- */
+body.a11y-hide-images img:not(.a11y-widget-container img):not(#a11y-widget-portal img),
+body.a11y-hide-images picture:not(.a11y-widget-container picture),
+body.a11y-hide-images svg:not(.a11y-widget-container svg):not(#a11y-widget-portal svg),
+body.a11y-hide-images video:not(.a11y-widget-container video),
+body.a11y-hide-images [role="img"]:not(.a11y-widget-container *):not(#a11y-widget-portal *) {
+  visibility: hidden !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+body.a11y-hide-images figure:not(.a11y-widget-container figure) {
+  min-height: 0 !important;
+}
+
+/* =========================================================================
+   v1.3.0 — Reading & Navigation Enhancements
+   ========================================================================= */
+
+/* -------------------------------------------------------------------------
+   Reading Mask (Spotlight)
+   Two overlay divs dim everything except a strip around the cursor.
+   Rendered in AccessibilityWidget.tsx, positioned via inline styles.
+   ------------------------------------------------------------------------- */
+.a11y-reading-mask-overlay {
+  position: fixed;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 9998;
+  pointer-events: none;
+}
+
+/* -------------------------------------------------------------------------
+   Text Alignment Override
+   ------------------------------------------------------------------------- */
+body.a11y-text-align-left *:not(.a11y-widget-container *):not(#a11y-widget-portal *) {
+  text-align: left !important;
+}
+
+body.a11y-text-align-center *:not(.a11y-widget-container *):not(#a11y-widget-portal *) {
+  text-align: center !important;
+}
+
+body.a11y-text-align-right *:not(.a11y-widget-container *):not(#a11y-widget-portal *) {
+  text-align: right !important;
+}
+
+/* -------------------------------------------------------------------------
+   Highlight Hover
+   ------------------------------------------------------------------------- */
+body.a11y-highlight-hover *:not(.a11y-widget-container *):not(#a11y-widget-portal *):hover {
+  outline: 2px solid #2563eb !important;
+  outline-offset: 2px;
+}
+
+/* -------------------------------------------------------------------------
+   Image Tooltips
+   Created dynamically via JS in useImageTooltips hook.
+   ------------------------------------------------------------------------- */
+.a11y-image-tooltip {
+  position: fixed;
+  z-index: 10000;
+  max-width: 300px;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #1f2937;
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  pointer-events: none;
+  word-wrap: break-word;
+}
+
+/* =========================================================================
+   v1.5.0 — Full Feature Parity
+   ========================================================================= */
+
+/* -------------------------------------------------------------------------
+   Readable Font (Atkinson Hyperlegible)
+   Using @import for the font to avoid bloating the file with base64.
+   Mutually exclusive with dyslexia font.
+   ------------------------------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+body.a11y-readable-font *:not(.a11y-widget-container *):not(#a11y-widget-portal *) {
+  font-family: 'Atkinson Hyperlegible', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
+/* -------------------------------------------------------------------------
+   Custom Colors (applied via CSS variables set imperatively)
+   ------------------------------------------------------------------------- */
+body.a11y-custom-text-color *:not(.a11y-widget-container *):not(#a11y-widget-portal *):not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) {
+  color: var(--a11y-custom-text-color) !important;
+}
+
+body.a11y-custom-title-color h1:not(.a11y-widget-container *):not(#a11y-widget-portal *),
+body.a11y-custom-title-color h2:not(.a11y-widget-container *):not(#a11y-widget-portal *),
+body.a11y-custom-title-color h3:not(.a11y-widget-container *):not(#a11y-widget-portal *),
+body.a11y-custom-title-color h4:not(.a11y-widget-container *):not(#a11y-widget-portal *),
+body.a11y-custom-title-color h5:not(.a11y-widget-container *):not(#a11y-widget-portal *),
+body.a11y-custom-title-color h6:not(.a11y-widget-container *):not(#a11y-widget-portal *) {
+  color: var(--a11y-custom-title-color) !important;
+}
+
+body.a11y-custom-bg-color {
+  background-color: var(--a11y-custom-bg-color) !important;
+}
+
+body.a11y-custom-bg-color div:not(.a11y-widget-container *):not(#a11y-widget-portal *),
+body.a11y-custom-bg-color section:not(.a11y-widget-container *):not(#a11y-widget-portal *),
+body.a11y-custom-bg-color article:not(.a11y-widget-container *):not(#a11y-widget-portal *),
+body.a11y-custom-bg-color main:not(.a11y-widget-container *):not(#a11y-widget-portal *),
+body.a11y-custom-bg-color header:not(.a11y-widget-container *):not(#a11y-widget-portal *),
+body.a11y-custom-bg-color footer:not(.a11y-widget-container *):not(#a11y-widget-portal *) {
+  background-color: var(--a11y-custom-bg-color) !important;
+}
+
+/* -------------------------------------------------------------------------
+   Dictionary Popup
+   ------------------------------------------------------------------------- */
+.a11y-dictionary-popup {
+  position: fixed;
+  z-index: 10001;
+  max-width: 320px;
+  padding: 12px 16px;
+  font-size: 14px;
+  line-height: 1.5;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #1f2937;
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  word-wrap: break-word;
+}
+
+.a11y-dictionary-popup strong {
+  font-size: 16px;
+  color: #111827;
+}
+
+.a11y-dictionary-popup em {
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.a11y-dictionary-popup small {
+  color: #2563eb;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+/* -------------------------------------------------------------------------
+   Alt Text Detection — Missing Alt Warning
+   ------------------------------------------------------------------------- */
+.a11y-missing-alt {
+  outline: 3px solid #ef4444 !important;
+  outline-offset: 2px;
+}
+
+.a11y-missing-alt-label {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  background: #ef4444;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  padding: 2px 6px;
+  border-radius: 3px;
+  z-index: 9999;
+  pointer-events: none;
+  line-height: 1.4;
+}
+
+/* -------------------------------------------------------------------------
+   Virtual Keyboard
+   ------------------------------------------------------------------------- */
+.a11y-virtual-keyboard {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10002;
+  background: #f3f4f6;
+  border-top: 2px solid #d1d5db;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.a11y-vk-row {
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+}
+
+.a11y-vk-key {
+  min-width: 36px;
+  height: 36px;
+  border: 1px solid #9ca3af;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #1f2937;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  transition: background 0.1s;
+  padding: 0 8px;
+}
+
+.a11y-vk-key:hover {
+  background: #e5e7eb;
+}
+
+.a11y-vk-key:active {
+  background: #d1d5db;
+}
+
+.a11y-vk-key.a11y-vk-wide {
+  min-width: 64px;
+  font-size: 12px;
+}
+
+.a11y-vk-key.a11y-vk-space {
+  min-width: 200px;
+}
+
+.a11y-vk-close {
+  position: absolute;
+  top: 4px;
+  right: 8px;
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: #6b7280;
+  padding: 4px 8px;
+}
+
+.a11y-vk-close:hover {
+  color: #1f2937;
+}
+
+/* -------------------------------------------------------------------------
+   Voice Commands Indicator
+   ------------------------------------------------------------------------- */
+.a11y-voice-indicator {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  z-index: 10001;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #1f2937;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.a11y-voice-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ef4444;
+  animation: a11y-pulse 1.5s infinite;
+}
+
+@keyframes a11y-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
 }

@@ -88,7 +88,11 @@ async function scanUrl(url: string): Promise<{ violations: AxeViolation[]; nodeC
     // scan should be defeated by.
     const context = await browser.newContext({ bypassCSP: true })
     const page = await context.newPage()
-    await page.goto(url, { waitUntil: 'networkidle', timeout: 30000 })
+    // 'networkidle' times out on pages with any persistent background
+    // traffic (chat widgets polling, analytics beacons) — 'load' plus a
+    // fixed settle delay is more robust across real client sites.
+    await page.goto(url, { waitUntil: 'load', timeout: 30000 })
+    await page.waitForTimeout(1500)
 
     const axeSource = fs.readFileSync(
       require.resolve('axe-core/axe.min.js'),

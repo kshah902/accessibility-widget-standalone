@@ -9,8 +9,8 @@
 // ECDSA P-256 public key (JWK format) — safe to embed, cannot forge signatures
 const PUBLIC_KEY: JsonWebKey = {
   kty: 'EC',
-  x: '0CNLE3swwGnDQmKrtufPJUwv4uydQivRVAN9mwR3ayI',
-  y: 'HlZaMI_Y-FtE_5PquSM9CDeHxxpW-HiK3YzxS-YkGsA',
+  x: '8xdmwiQWjN8zehECwAuJtNSikuFhtQq5CEUMALcWlu4',
+  y: '5iqtPaK2jbERxHvVgx8j8LQ6mRzr5BXGAfnZnjCU1SY',
   crv: 'P-256',
 }
 

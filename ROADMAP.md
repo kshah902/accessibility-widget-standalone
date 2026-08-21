@@ -1,5 +1,7 @@
 # Akby Accessibility Widget — Feature Roadmap
 
+> As of v1.5.1, every item below through v1.4.0 has shipped, plus a v1.5.0 batch not originally planned here: readable font, custom text/title/background colors, dictionary lookup, virtual keyboard, voice commands, alt-text detection, auto-remediation, and a 13-language widget UI (`src/i18n.ts`). This file previously understated what was actually built — see checkboxes below.
+
 ## Current Features (v1.1.0)
 
 | Feature | Status |
@@ -69,13 +71,13 @@ Features common across major competitors (UserWay, accessiBe, EqualWeb, AudioEye
 
 ## Release Plan
 
-### v1.2.0 — Display & Visual Enhancements
+### v1.2.0 — Display & Visual Enhancements — Shipped
 
-- [ ] Dark Mode toggle
-- [ ] Text Spacing control (letter-spacing + word-spacing)
-- [ ] Monochrome / Desaturate toggle
-- [ ] Saturation control (low / high)
-- [ ] Hide Images toggle
+- [x] Dark Mode toggle
+- [x] Text Spacing control (letter-spacing + word-spacing)
+- [x] Monochrome / Desaturate toggle
+- [x] Saturation control (low / high)
+- [x] Hide Images toggle
 
 **Files to modify:**
 - `src/types.ts` — Add `darkMode`, `textSpacing`, `monochrome`, `saturation`, `hideImages` to `AccessibilitySettings`
@@ -83,13 +85,13 @@ Features common across major competitors (UserWay, accessiBe, EqualWeb, AudioEye
 - `src/accessibility.css` — CSS rules for dark mode, monochrome filter, text spacing, image hiding
 - `src/AccessibilityWidget.tsx` — New toggles in the Display tab
 
-### v1.3.0 — Reading & Navigation Enhancements
+### v1.3.0 — Reading & Navigation Enhancements — Shipped
 
-- [ ] Reading Mask (spotlight mode)
-- [ ] Text Alignment control (left / center / right)
-- [ ] Page Structure / Headings Navigator
-- [ ] Highlight Hover toggle
-- [ ] Image Tooltips (show alt text on hover)
+- [x] Reading Mask (spotlight mode)
+- [x] Text Alignment control (left / center / right)
+- [x] Page Structure / Headings Navigator
+- [x] Highlight Hover toggle
+- [x] Image Tooltips (show alt text on hover; keyboard-focus support added in v1.5.1)
 
 **Files to modify:**
 - `src/types.ts` — Add `readingMask`, `textAlignment`, `highlightHover`, `imageTooltips` types
@@ -97,13 +99,13 @@ Features common across major competitors (UserWay, accessiBe, EqualWeb, AudioEye
 - `src/accessibility.css` — Reading mask overlay styles, text alignment classes, hover highlight styles
 - `src/AccessibilityWidget.tsx` — New controls in the Reading tab + headings navigator panel
 
-### v1.4.0 — Profiles & Presets
+### v1.4.0 — Profiles & Presets — Shipped
 
-- [ ] Seizure-Safe Profile (one-click)
-- [ ] ADHD-Friendly Profile (one-click)
-- [ ] Vision Impaired Profile (one-click)
-- [ ] Mute Sounds toggle
-- [ ] Multi-language widget UI (start with Spanish + French)
+- [x] Seizure-Safe Profile (one-click)
+- [x] ADHD-Friendly Profile (one-click)
+- [x] Vision Impaired Profile (one-click)
+- [x] Mute Sounds toggle
+- [x] Multi-language widget UI (shipped with 13 languages in v1.5.0, not just Spanish + French)
 
 **Files to modify:**
 - `src/types.ts` — Add profile types and `muteSounds`, `language` settings

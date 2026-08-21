@@ -136,8 +136,8 @@ export async function validateLicense(
     const isSignatureValid = await crypto.subtle.verify(
       { name: 'ECDSA', hash: 'SHA-256' },
       key,
-      signatureBytes,
-      dataToVerify
+      signatureBytes.slice().buffer,
+      dataToVerify.slice().buffer
     )
 
     if (!isSignatureValid) {

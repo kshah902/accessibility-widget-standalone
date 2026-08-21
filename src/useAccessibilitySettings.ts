@@ -715,7 +715,28 @@ export function useDictionary(enabled: boolean) {
 
           popup = document.createElement('div')
           popup.className = 'a11y-dictionary-popup'
-          popup.innerHTML = `<strong>${entry.word}</strong>${phonetic ? ` <em>${phonetic}</em>` : ''}${partOfSpeech ? `<br><small>${partOfSpeech}</small>` : ''}<br>${def}`
+
+          const wordEl = document.createElement('strong')
+          wordEl.textContent = String(entry.word ?? '')
+          popup.appendChild(wordEl)
+
+          if (phonetic) {
+            popup.appendChild(document.createTextNode(' '))
+            const phoneticEl = document.createElement('em')
+            phoneticEl.textContent = String(phonetic)
+            popup.appendChild(phoneticEl)
+          }
+
+          if (partOfSpeech) {
+            popup.appendChild(document.createElement('br'))
+            const posEl = document.createElement('small')
+            posEl.textContent = String(partOfSpeech)
+            popup.appendChild(posEl)
+          }
+
+          popup.appendChild(document.createElement('br'))
+          popup.appendChild(document.createTextNode(String(def)))
+
           document.body.appendChild(popup)
 
           // Position near click
@@ -973,8 +994,7 @@ export function useImageTooltips(enabled: boolean) {
 
     let activeTooltip: HTMLElement | null = null
 
-    function handleMouseEnter(e: Event) {
-      const img = e.target as HTMLImageElement
+    function showTooltip(img: HTMLImageElement) {
       const alt = img.getAttribute('alt')
       if (!alt) return
 
@@ -1003,28 +1023,48 @@ export function useImageTooltips(enabled: boolean) {
       activeTooltip = tooltip
     }
 
-    function handleMouseLeave() {
+    function hideTooltip() {
       if (activeTooltip) {
         activeTooltip.remove()
         activeTooltip = null
       }
     }
 
+    function handleMouseEnter(e: Event) {
+      showTooltip(e.target as HTMLImageElement)
+    }
+
+    // Images aren't natively focusable, so keyboard users only reach one via
+    // an existing focusable ancestor (a linked/buttoned image) — we hook that
+    // ancestor's focus rather than adding tabindex to every image on the page,
+    // which would bloat tab order for otherwise non-interactive images.
     const images = document.querySelectorAll('img[alt]')
-    images.forEach((img) => {
+    const focusBindings: { target: HTMLElement; img: HTMLImageElement; onFocus: () => void }[] = []
+
+    images.forEach((el) => {
+      const img = el as HTMLImageElement
       img.addEventListener('mouseenter', handleMouseEnter)
-      img.addEventListener('mouseleave', handleMouseLeave)
+      img.addEventListener('mouseleave', hideTooltip)
+
+      const focusTarget = img.closest('a[href], button, [tabindex]') as HTMLElement | null
+      if (focusTarget) {
+        const onFocus = () => showTooltip(img)
+        focusTarget.addEventListener('focus', onFocus)
+        focusTarget.addEventListener('blur', hideTooltip)
+        focusBindings.push({ target: focusTarget, img, onFocus })
+      }
     })
 
     return () => {
       images.forEach((img) => {
         img.removeEventListener('mouseenter', handleMouseEnter)
-        img.removeEventListener('mouseleave', handleMouseLeave)
+        img.removeEventListener('mouseleave', hideTooltip)
       })
-      if (activeTooltip) {
-        activeTooltip.remove()
-        activeTooltip = null
-      }
+      focusBindings.forEach(({ target, onFocus }) => {
+        target.removeEventListener('focus', onFocus)
+        target.removeEventListener('blur', hideTooltip)
+      })
+      hideTooltip()
     }
   }, [enabled])
 }

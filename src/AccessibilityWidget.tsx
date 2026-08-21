@@ -350,13 +350,15 @@ function AccessibilityStatementModal({
 
 Last updated: ${date}
 
-We are committed to ensuring digital accessibility for people with disabilities. We are continually improving the user experience for everyone and applying the relevant accessibility standards.
+We are committed to ensuring digital accessibility for people with disabilities. We are continually working to improve the user experience for everyone and to align with the Web Content Accessibility Guidelines (WCAG) 2.2 Level AA.
 
 Measures taken:
-- We use the Akby Accessibility Widget to provide accessibility tools
-- We aim to conform to WCAG 2.1 Level AA
-- We regularly test our website for accessibility issues
+- We provide the Akby Accessibility Widget, giving visitors tools to adjust how our site displays and behaves
+- We are working toward WCAG 2.2 Level AA across our site's underlying code, not only through this widget
+- We review our website for accessibility issues on an ongoing basis
 - We provide multiple ways to navigate and interact with our content
+
+This statement describes tools and effort in progress, not a certification of full WCAG conformance.
 
 Accessibility features available:
 - Text size adjustment (100% to 175%)
@@ -369,6 +371,8 @@ Accessibility features available:
 - Reduced motion mode
 - Image tooltips and link highlighting
 - Virtual keyboard and voice commands
+
+Some optional features send data to third-party services to work: Voice Commands uses your browser's built-in speech recognition (typically processed by your browser vendor), and the Dictionary tool sends the word you click to a third-party dictionary API. Both are off by default and only activate if you turn them on.
 
 If you encounter any accessibility barriers on our website, please contact us. We take accessibility feedback seriously and will address concerns promptly.`
 
@@ -400,14 +404,15 @@ If you encounter any accessibility barriers on our website, please contact us. W
         <div className="a11y-statement-content">
           <h3>Accessibility Statement for {domain}</h3>
           <p><em>Last updated: {date}</em></p>
-          <p>We are committed to ensuring digital accessibility for people with disabilities. We are continually improving the user experience for everyone and applying the relevant accessibility standards.</p>
+          <p>We are committed to ensuring digital accessibility for people with disabilities. We are continually working to improve the user experience for everyone and to align with the Web Content Accessibility Guidelines (WCAG) 2.2 Level AA.</p>
           <h3>Measures Taken</h3>
           <ul>
-            <li>We use the Akby Accessibility Widget to provide accessibility tools</li>
-            <li>We aim to conform to WCAG 2.1 Level AA</li>
-            <li>We regularly test our website for accessibility issues</li>
+            <li>We provide the Akby Accessibility Widget, giving visitors tools to adjust how our site displays and behaves</li>
+            <li>We are working toward WCAG 2.2 Level AA across our site's underlying code, not only through this widget</li>
+            <li>We review our website for accessibility issues on an ongoing basis</li>
             <li>We provide multiple ways to navigate and interact with our content</li>
           </ul>
+          <p style={{ fontStyle: 'italic' }}>This statement describes tools and effort in progress, not a certification of full WCAG conformance.</p>
           <h3>Accessibility Features Available</h3>
           <ul>
             <li>Text size adjustment (100% to 175%)</li>
@@ -420,6 +425,7 @@ If you encounter any accessibility barriers on our website, please contact us. W
             <li>Reduced motion mode</li>
             <li>Virtual keyboard and voice commands</li>
           </ul>
+          <p>Some optional features send data to third-party services to work: Voice Commands uses your browser's built-in speech recognition, and the Dictionary tool sends the word you click to a third-party dictionary API. Both are off by default.</p>
           <p>If you encounter any accessibility barriers on our website, please contact us.</p>
         </div>
         <div className="a11y-statement-footer">

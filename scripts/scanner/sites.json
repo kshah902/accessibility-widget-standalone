@@ -1,0 +1,68 @@
+[
+  {
+    "domain": "akby.com",
+    "url": "https://akby.com",
+    "repo": "kshah902/akby-website",
+    "framework": "nextjs"
+  },
+  {
+    "domain": "gardenstatemedicalgroup.com",
+    "url": "https://gardenstatemedicalgroup.com",
+    "repo": "kshah902/gsmg-website",
+    "framework": "nextjs"
+  },
+  {
+    "domain": "nulukaesthetics.com",
+    "url": "https://nulukaesthetics.com",
+    "repo": "kshah902/nuluk-aesthetics",
+    "framework": "nextjs"
+  },
+  {
+    "domain": "raodermatology.com",
+    "url": "https://raodermatology.com",
+    "repo": "kshah902/rao-dermatology-website",
+    "framework": "nextjs-payload"
+  },
+  {
+    "domain": "townedentalfl.com",
+    "url": "https://townedentalfl.com",
+    "repo": null,
+    "framework": "wordpress"
+  },
+  {
+    "domain": "totaltox.net",
+    "url": "https://totaltox.net",
+    "repo": "kshah902/totaltox-website",
+    "framework": "static-html"
+  },
+  {
+    "domain": "eivdiagnostics.com",
+    "url": "https://eivdiagnostics.com",
+    "repo": "kshah902/eiv-diagnostics-website",
+    "framework": "nextjs-payload"
+  },
+  {
+    "domain": "precisiondigestive.com",
+    "url": "https://precisiondigestive.com",
+    "repo": "kshah902/drparikh-website",
+    "framework": "nextjs-payload"
+  },
+  {
+    "domain": "njvinylwrapz.com",
+    "url": "https://njvinylwrapz.com",
+    "repo": "kshah902/nj-vinyl-wrapz-website",
+    "framework": "nextjs-payload"
+  },
+  {
+    "domain": "carestream.ai",
+    "url": "https://carestream.ai",
+    "repo": "kshah902/medistics-nextjs",
+    "framework": "nextjs"
+  },
+  {
+    "domain": "tristatemso.com",
+    "url": "https://tristatemso.com",
+    "repo": null,
+    "framework": "wordpress"
+  }
+]

@@ -69,19 +69,45 @@ That's it — the widget auto-initializes when the DOM is ready.
 
 ### Option A: Script Tag (recommended)
 
+Load the stylesheet with a small client component that injects it
+imperatively, rather than a plain `<link>` in a Server Component. **Do
+not** use a JSX `<link media="print" onLoad={...}>` swap — React
+reconciles that element back to `media="print"` (what the JSX declares)
+on any subsequent re-render, silently undoing the manual DOM mutation the
+`onLoad` handler made, so the stylesheet works briefly then goes inert.
+This has actually happened in production across multiple sites.
+
+```tsx
+// components/AccessibilityWidgetCss.tsx
+'use client'
+
+import { useEffect } from 'react'
+
+export function AccessibilityWidgetCss() {
+  useEffect(() => {
+    if (document.getElementById('a11y-widget-css')) return
+    const link = document.createElement('link')
+    link.id = 'a11y-widget-css'
+    link.rel = 'stylesheet'
+    link.href = 'https://cdn.jsdelivr.net/npm/@krunalshah/accessibility-widget-standalone@latest/dist/accessibility.css'
+    document.head.appendChild(link)
+  }, [])
+
+  return null
+}
+```
+
 In your root layout (`app/layout.tsx` or `pages/_app.tsx`):
 
 ```tsx
 import Script from 'next/script'
+import { AccessibilityWidgetCss } from '@/components/AccessibilityWidgetCss'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
-        <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/@krunalshah/accessibility-widget-standalone@latest/dist/accessibility.css"
-        />
+        <AccessibilityWidgetCss />
       </head>
       <body>
         {children}

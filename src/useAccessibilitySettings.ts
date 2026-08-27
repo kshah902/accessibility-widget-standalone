@@ -109,6 +109,30 @@ const classMap: Record<string, string | ((value: any) => string) | null> = {
   autoRemediation: null, // Handled via JS hook
 }
 
+const FONTS_STYLESHEET_ID = 'a11y-fonts-stylesheet'
+
+// The OpenDyslexic font (both weights, base64-embedded) used to live in the
+// always-loaded accessibility.css, where it accounted for ~93% of that
+// file's weight despite most visitors never enabling this toggle. It now
+// ships as its own accessibility-fonts.css, loaded lazily here the first
+// time Dyslexia Font is actually turned on.
+function ensureDyslexiaFontLoaded() {
+  if (typeof document === 'undefined') return
+  if (document.getElementById(FONTS_STYLESHEET_ID)) return
+
+  const mainStylesheet = document.querySelector<HTMLLinkElement>(
+    'link[href*="accessibility.css"]'
+  )
+  if (!mainStylesheet) return
+
+  const fontsHref = mainStylesheet.href.replace('accessibility.css', 'accessibility-fonts.css')
+  const link = document.createElement('link')
+  link.id = FONTS_STYLESHEET_ID
+  link.rel = 'stylesheet'
+  link.href = fontsHref
+  document.head.appendChild(link)
+}
+
 // Announcement messages for screen readers
 const getAnnouncementMessage = (
   key: string,
@@ -278,6 +302,10 @@ export function useAccessibilitySettings(
         body.classList.add(classConfig)
       }
     })
+
+    if (settings.dyslexiaFont) {
+      ensureDyslexiaFontLoaded()
+    }
 
     // Imperative filter management (monochrome, saturation, color blindness)
     const filters: string[] = []

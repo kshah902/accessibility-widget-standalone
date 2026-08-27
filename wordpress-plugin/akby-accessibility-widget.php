@@ -3,7 +3,7 @@
  * Plugin Name: Akby Accessibility Widget
  * Plugin URI: https://github.com/kshah902/accessibility-widget-standalone
  * Description: Add a comprehensive accessibility widget to your WordPress site. Features include text size adjustment, high contrast mode, dyslexia font, color blindness filters, text-to-speech, and more.
- * Version: 1.5.2
+ * Version: 1.5.3
  * Author: Akby
  * Author URI: https://akby.com
  * License: Proprietary
@@ -16,7 +16,7 @@ if (!defined('ABSPATH')) {
 }
 
 // Define plugin constants
-define('A11Y_WIDGET_VERSION', '1.5.2');
+define('A11Y_WIDGET_VERSION', '1.5.3');
 define('A11Y_WIDGET_CDN_BASE', 'https://cdn.jsdelivr.net/npm/@krunalshah/accessibility-widget-standalone@latest');
 define('A11Y_WIDGET_GITHUB_REPO', 'kshah902/accessibility-widget-standalone');
 define('A11Y_WIDGET_SLUG', plugin_basename(__FILE__));
@@ -172,6 +172,31 @@ function a11y_widget_script_attributes($tag, $handle, $src) {
 }
 
 add_filter('script_loader_tag', 'a11y_widget_script_attributes', 10, 3);
+
+/**
+ * Load the widget stylesheet without blocking first paint.
+ *
+ * The standard media="print" trick: the browser fetches it at normal
+ * priority (so it's warm by the time it's needed) but doesn't block
+ * rendering, since print stylesheets don't apply to the screen. onload
+ * flips it to media="all" once loaded. <noscript> covers JS-disabled users.
+ */
+function a11y_widget_defer_style($tag, $handle) {
+    if ($handle !== 'akby-a11y-widget-css') {
+        return $tag;
+    }
+
+    $noscript_fallback = '<noscript>' . $tag . '</noscript>';
+    $deferred_tag = str_replace(
+        array("media='all'", 'media="all"'),
+        array("media='print' onload=\"this.media='all'\"", 'media="print" onload="this.media=\'all\'"'),
+        $tag
+    );
+
+    return $deferred_tag . $noscript_fallback;
+}
+
+add_filter('style_loader_tag', 'a11y_widget_defer_style', 10, 2);
 
 // ============================================================
 // Auto-Update from GitHub Releases

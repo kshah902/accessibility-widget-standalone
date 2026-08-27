@@ -45,14 +45,17 @@ The plugin loads the widget from the jsDelivr CDN and auto-updates from GitHub r
 
 ## HTML / Squarespace / Static Sites
 
-Add these two tags before `</head>` or before `</body>`:
+Add these tags before `</head>` or before `</body>`:
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@krunalshah/accessibility-widget-standalone@latest/dist/accessibility.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@krunalshah/accessibility-widget-standalone@latest/dist/accessibility.css" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@krunalshah/accessibility-widget-standalone@latest/dist/accessibility.css"></noscript>
 <script src="https://cdn.jsdelivr.net/npm/@krunalshah/accessibility-widget-standalone@latest/dist/standalone.global.js" data-license-key="AW-YOUR-KEY-HERE"></script>
 ```
 
 That's it — the widget auto-initializes when the DOM is ready.
+
+**Why `media="print" onload=...`?** A plain `<link rel="stylesheet">` blocks the browser from painting anything until it downloads — the standard fix is to load it as a print stylesheet (which the browser fetches but doesn't use to block rendering) and flip it to `all` once it's loaded. The `<noscript>` fallback covers visitors with JavaScript disabled. As of v1.5.3 this only matters for a ~30KB file (the dyslexia font used to be embedded here too and made it 245KB — it now loads separately, on demand, only if a visitor actually turns that toggle on), but the pattern costs nothing and is worth keeping regardless of file size.
 
 ### Squarespace-Specific Steps
 

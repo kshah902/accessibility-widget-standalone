@@ -37,7 +37,7 @@ Features common across major competitors (UserWay, accessiBe, EqualWeb, AudioEye
 | Reading Mask | Dim everything except a strip around the cursor (spotlight effect) |
 | Monochrome / Desaturate | Convert the page to grayscale |
 | Saturation Control | Increase or decrease color intensity |
-| Pause Animations | Specifically freeze GIFs, CSS animations, and video autoplay individually |
+| Pause Animations | Specifically freeze GIFs, CSS animations, and video autoplay individually — CSS animations/transitions and `<video>`/`<audio>` autoplay done as of v1.5.4 (Reduce Motion); animated GIF freezing (needs a canvas-swap trick, not a CSS fix) still open |
 | Text Alignment | Let users set left, center, right, or justified text |
 | Page Structure / Headings Navigator | Show a page outline and jump to headings |
 | Highlight Hover | Highlight the element under the cursor |

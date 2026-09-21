@@ -7,6 +7,7 @@ import {
   useAccessibilityKeyboardShortcuts,
   useTextToSpeech,
   useMuteSounds,
+  useReduceMotionMedia,
   useImageTooltips,
   useDictionary,
   useVoiceCommands,
@@ -654,6 +655,7 @@ export function AccessibilityWidget() {
 
   // Activate feature hooks
   useMuteSounds(settings.muteSounds)
+  useReduceMotionMedia(settings.reduceMotion)
   useImageTooltips(settings.imageTooltips)
   useDictionary(settings.dictionaryEnabled)
   const { isListening, isSupported: voiceSupported } = useVoiceCommands(settings.voiceCommands)

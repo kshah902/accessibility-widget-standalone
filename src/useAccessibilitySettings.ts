@@ -267,6 +267,13 @@ export function useAccessibilitySettings(
         }
         setSettings(merged)
         prevSettingsRef.current = merged
+      } else if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) {
+        // First visit, no saved preference yet: honor the OS-level
+        // accessibility setting instead of requiring the visitor to find
+        // and click the toggle themselves.
+        const initial = { ...defaultSettings, reduceMotion: true }
+        setSettings(initial)
+        prevSettingsRef.current = initial
       }
     } catch (error) {
       console.error('Failed to load accessibility settings:', error)
@@ -679,6 +686,56 @@ export function useMuteSounds(enabled: boolean) {
       document.querySelectorAll('audio, video').forEach((el) => {
         ;(el as HTMLMediaElement).muted = false
       })
+    }
+  }, [enabled])
+}
+
+// Reduce Motion hook: pauses autoplaying video/audio on the host page.
+// CSS alone (animation-duration overrides in accessibility.css) cannot stop
+// <video autoplay>/<audio autoplay> playback or the resulting motion, which
+// WCAG 2.2.2 (Pause, Stop, Hide) requires users be able to stop. Mirrors the
+// useMuteSounds hook's MutationObserver pattern to also catch media inserted
+// after the toggle is enabled (e.g. lazy-loaded carousels, SPA navigation).
+export function useReduceMotionMedia(enabled: boolean) {
+  useEffect(() => {
+    if (!enabled) return
+
+    const pauseAutoplaying = (el: HTMLMediaElement) => {
+      if (!el.paused) {
+        el.pause()
+      }
+      // Prevent the element from resuming on its own once paused.
+      el.removeAttribute('autoplay')
+      el.loop = false
+    }
+
+    const pauseAll = () => {
+      document.querySelectorAll('audio, video').forEach((el) => {
+        pauseAutoplaying(el as HTMLMediaElement)
+      })
+    }
+
+    pauseAll()
+
+    const observer = new MutationObserver((mutations) => {
+      for (const mutation of mutations) {
+        mutation.addedNodes.forEach((node) => {
+          if (node instanceof HTMLMediaElement) {
+            pauseAutoplaying(node)
+          }
+          if (node instanceof HTMLElement) {
+            node.querySelectorAll('audio, video').forEach((el) => {
+              pauseAutoplaying(el as HTMLMediaElement)
+            })
+          }
+        })
+      }
+    })
+
+    observer.observe(document.body, { childList: true, subtree: true })
+
+    return () => {
+      observer.disconnect()
     }
   }, [enabled])
 }
